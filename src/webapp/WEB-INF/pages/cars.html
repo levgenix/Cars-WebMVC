@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cars</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" th:with="intList = ${ {1, 2, 3, 4, 5} }">
+        <div class="row mt-4 mb-4">
+            Вывести
+            <a th:each="c : ${intList}" th:href="@{/cars(count=${c})}" th:text="|&nbsp;${c}&nbsp;|"/>
+            <a th:href="@{/cars}" th:text="Все"/>
+        </div>
+
+
+    </div>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div th:each="car : ${cars}" class="card mb-2 mr-2">
+                <div class="card-header" th:text="${car.getModel()}"/>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" th:text="|Цвет: ${car.getColor()}|"/>
+                    <li class="list-group-item" th:text="|Год выпуска: ${car.getYear()}|"/>
+                    <li class="list-group-item" th:text="|Цена: ${#numbers.formatDecimal(car.getPrice(), 0, 'COMMA', 2, 'POINT')} руб.|"/>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>
