@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 @Repository
 public class CarDaoImpl implements CarDao {
     private static final List<Car> carList = new ArrayList<>();
+
     static {
         carList.add(new Car("Mercedes-Benz M-Класс II (W164) 350", "чёрный", 2007, 650_000.00));
         carList.add(new Car("Hyundai ix35 I Рестайлинг", "белый", 2015, 945_000));
